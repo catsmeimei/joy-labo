@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joy億LABO｜アーカイブ一覧</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+    }
+
+    /* ===== キラキラ金色ヘッダー ===== */
+    header {
+      position: relative;
+      background: linear-gradient(135deg, #7b5c00, #d4a017, #ffe066, #f5c518, #b8860b, #ffe066, #c8960c);
+      background-size: 300% 300%;
+      animation: goldShift 6s ease infinite;
+      color: #3d2800;
+      text-align: center;
+      padding: 50px 20px;
+      overflow: hidden;
+    }
+
+    @keyframes goldShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header::before,
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 200%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        60deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,200,0.15) 40px,
+        rgba(255,255,200,0.15) 42px
+      );
+      animation: shimmer 3s linear infinite;
+    }
+
+    header::after {
+      background: repeating-linear-gradient(
+        -60deg,
+        transparent,
+        transparent 50px,
+        rgba(255,255,255,0.1) 50px,
+        rgba(255,255,255,0.1) 52px
+      );
+      animation: shimmer 5s linear infinite reverse;
+    }
+
+    @keyframes shimmer {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0%); }
+    }
+
+    header h1 {
+      position: relative;
+      font-size: 2.4rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      text-shadow:
+        0 1px 2px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,220,50,0.6);
+      color: #3d2000;
+    }
+
+    header p {
+      position: relative;
+      font-size: 0.95rem;
+      color: #5a3800;
+      opacity: 0.9;
+    }
+
+    /* ===== レイアウト ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .count {
+      text-align: right;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* サムネイル：クリックでYouTubeへ */
+    .thumbnail-link {
+      display: block;
+      position: relative;
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 再生ボタン風オーバーレイ */
+    .thumbnail-link::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+      color: white;
+      background: rgba(0,0,0,0.55);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 60px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .video-label {
+      padding: 10px 16px 4px;
+      font-size: 0.75rem;
+      color: #b8860b;
+      font-weight: bold;
+    }
+
+    .video-title {
+      padding: 0 16px 16px;
+      font-size: 0.9rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Joy億LABO</h1>
+    <p>アーカイブ動画一覧</p>
+  </header>
+
+  <div class="container">
+    <p class="count" id="videoCount"></p>
+
+    <div class="grid" id="videoGrid">
+
+      <!-- ===== 動画リスト（新しいものを上に追加してください）===== -->
+
+      <div class="video-card">
+        <a class="thumbnail-link" href="https://youtube.com/live/Q_WcjeEVULs" target="_blank">
+          <img class="video-thumbnail" src="https://img.youtube.com/vi/Q_WcjeEVULs/hqdefault.jpg" alt="第6回サムネイル">
+        </a>
+        <div class="video-label">第6回</div>
+        <div class="video-title">0507 Joy億LABOグルコン（6次元ビジネスとは）</div>
+      </div>
+
+      <div class="video-card">
+        <a class="thumbnail-link" href="https://youtube.com/live/trymRVogvb8" target="_blank">
+          <img class="video-thumbnail" src="https://img.youtube.com/vi/trymRVogvb8/hqdefault.jpg" alt="第5回サムネイル">
+        </a>
+        <div class="video-label">第5回</div>
+        <div class="video-title">0423 Joy億LABOグルコン（受け取り力）</div>
+      </div>
+
+      <div class="video-card">
+        <a class="thumbnail-link" href="https://youtube.com/live/qshSe3WjXoU" target="_blank">
+          <img class="video-thumbnail" src="https://img.youtube.com/vi/qshSe3WjXoU/hqdefault.jpg" alt="第4回サムネイル">
+        </a>
+        <div class="video-label">第4回</div>
+        <div class="video-title">0416 Joy億LABOグルコン（荒魂の解放）</div>
+      </div>
+
+      <div class="video-card">
+        <a class="thumbnail-link" href="https://youtube.com/live/2YPIwU052vg" target="_blank">
+          <img class="video-thumbnail" src="https://img.youtube.com/vi/2YPIwU052vg/hqdefault.jpg" alt="第3回サムネイル">
+        </a>
+        <div class="video-label">第3回</div>
+        <div class="video-title">0409 Joy億LABOグルコン</div>
+      </div>
+
+      <div class="video-card">
+        <a class="thumbnail-link" href="https://youtube.com/live/NYhFOAl4RW4" target="_blank">
+          <img class="video-thumbnail" src="https://img.youtube.com/vi/NYhFOAl4RW4/hqdefault.jpg" alt="第2回サムネイル">
+        </a>
+        <div class="video-label">第2回</div>
+        <div class="video-title">0402 Joy億LABOグルコン</div>
+      </div>
+
+      <div class="video-card">
+        <a class="thumbnail-link" href="https://youtube.com/live/BoAXOkk0fCk" target="_blank">
+          <img class="video-thumbnail" src="https://img.youtube.com/vi/BoAXOkk0fCk/hqdefault.jpg" alt="第1回サムネイル">
+        </a>
+        <div class="video-label">第1回</div>
+        <div class="video-title">0326 Joy億LABOグルコン</div>
+      </div>
+
+      <!-- ===== ここより上に新しい動画を追加してください ===== -->
+
+    </div>
+  </div>
+
+  <footer>
+    Joy億LABO &copy; めいこ
+  </footer>
+
+  <script>
+    // パスワード認証
+    (function() {
+      const correct = 'joyjoy';
+      const stored = sessionStorage.getItem('joyauth');
+      if (stored !== correct) {
+        document.body.style.display = 'none';
+        const pw = prompt('パスワードを入力してください');
+        if (pw === correct) {
+          sessionStorage.setItem('joyauth', correct);
+
+          document.body.style.display = '';
+        } else {
+          document.body.innerHTML = '<p style="text-align:center;margin-top:40px;font-family:sans-serif;color:#888;">アクセスできません。</p>';
+          document.body.style.display = '';
+        }
+      }
+    })();
+
+    const cards = document.querySelectorAll('.video-card');
+    document.getElementById('videoCount').textContent = '全 ' + cards.length + ' 本';
+  </script>
+
+</body>
+</html>
