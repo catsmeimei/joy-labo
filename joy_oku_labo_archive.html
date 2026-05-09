@@ -17,6 +17,83 @@
       color: #333;
     }
 
+    /* ===== パスワード画面 ===== */
+    #pw-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #c47d00, #e8a000, #ffdd00, #b06800);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    #pw-screen h2 {
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px rgba(100,50,0,0.5);
+    }
+
+    #pw-screen p {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+
+    #pw-input {
+      width: 100%;
+      max-width: 300px;
+      padding: 14px 16px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      text-align: center;
+      outline: none;
+      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+    }
+
+    #pw-btn {
+      width: 100%;
+      max-width: 300px;
+      padding: 14px;
+      background: #3d2000;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+    }
+
+    #pw-btn:active {
+      opacity: 0.8;
+    }
+
+    #pw-error {
+      color: #fff;
+      background: rgba(180,0,0,0.6);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* ===== スマホ対応 ===== */
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .grid, .ref-grid { grid-template-columns: 1fr; }
+    }
+
     /* ===== キラキラ金色ヘッダー ===== */
     header {
       position: relative;
@@ -289,6 +366,15 @@
 </head>
 <body>
 
+  <!-- パスワード画面 -->
+  <div id="pw-screen">
+    <h2>JOY億LABO</h2>
+    <p>パスワードを入力してください</p>
+    <input id="pw-input" type="password" placeholder="パスワード" autocomplete="off">
+    <button id="pw-btn" onclick="checkPw()">アーカイブを見る</button>
+    <div id="pw-error">パスワードが違います</div>
+  </div>
+
   <header>
     <h1>JOY億LABO</h1>
     <p>アーカイブ一覧</p>
@@ -422,23 +508,28 @@
   </footer>
 
   <script>
-    // パスワード認証
-    (function() {
-      const correct = 'joy';
-      const stored = sessionStorage.getItem('joyauth');
-      if (stored !== correct) {
-        document.body.style.display = 'none';
-        const pw = prompt('パスワードを入力してください');
-        if (pw === correct) {
-          sessionStorage.setItem('joyauth', correct);
+    const correct = 'joy';
 
-          document.body.style.display = '';
-        } else {
-          document.body.innerHTML = '<p style="text-align:center;margin-top:40px;font-family:sans-serif;color:#888;">アクセスできません。</p>';
-          document.body.style.display = '';
-        }
+    // 認証済みならパスワード画面を非表示
+    if (localStorage.getItem('joyauth') === correct) {
+      document.getElementById('pw-screen').style.display = 'none';
+    }
+
+    function checkPw() {
+      const val = document.getElementById('pw-input').value;
+      if (val === correct) {
+        localStorage.setItem('joyauth', correct);
+        document.getElementById('pw-screen').style.display = 'none';
+      } else {
+        document.getElementById('pw-error').style.display = 'block';
+        document.getElementById('pw-input').value = '';
       }
-    })();
+    }
+
+    // Enterキーでも送信
+    document.getElementById('pw-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPw();
+    });
 
     const cards = document.querySelectorAll('.video-card');
     document.getElementById('videoCount').textContent = '全 ' + cards.length + ' 本';
