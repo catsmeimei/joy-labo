@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joy億LABO｜アーカイブ一覧</title>
-  <style>
+<style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -150,7 +150,7 @@
     header h1 {
       position: relative;
       font-size: 3rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       margin-bottom: 12px;
       color: white;
       text-shadow:
@@ -510,15 +510,22 @@
   <script>
     const correct = 'joy';
 
+    function storageGet(key) {
+      try { return localStorage.getItem(key); } catch(e) { return null; }
+    }
+    function storageSet(key, val) {
+      try { localStorage.setItem(key, val); } catch(e) {}
+    }
+
     // 認証済みならパスワード画面を非表示
-    if (localStorage.getItem('joyauth') === correct) {
+    if (storageGet('joyauth') === correct) {
       document.getElementById('pw-screen').style.display = 'none';
     }
 
     function checkPw() {
       const val = document.getElementById('pw-input').value;
       if (val === correct) {
-        localStorage.setItem('joyauth', correct);
+        storageSet('joyauth', correct);
         document.getElementById('pw-screen').style.display = 'none';
       } else {
         document.getElementById('pw-error').style.display = 'block';
