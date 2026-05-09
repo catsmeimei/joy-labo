@@ -20,70 +20,77 @@
     /* ===== キラキラ金色ヘッダー ===== */
     header {
       position: relative;
-      background: linear-gradient(135deg, #7b5c00, #d4a017, #ffe066, #f5c518, #b8860b, #ffe066, #c8960c);
-      background-size: 300% 300%;
-      animation: goldShift 6s ease infinite;
-      color: #3d2800;
+      background: linear-gradient(160deg, #c47d00 0%, #e8a000 20%, #f5c400 40%, #ffdd00 50%, #e8a000 70%, #b06800 100%);
       text-align: center;
-      padding: 50px 20px;
+      padding: 60px 20px;
       overflow: hidden;
     }
 
-    @keyframes goldShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* 斜めの光の筋 */
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255,255,200,0.35) 45%,
+        rgba(255,255,255,0.5) 50%,
+        rgba(255,255,200,0.35) 55%,
+        transparent 70%
+      );
+      animation: lightBeam 4s ease-in-out infinite;
     }
 
-    header::before,
     header::after {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 200%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        60deg,
-        transparent,
-        transparent 40px,
-        rgba(255,255,200,0.15) 40px,
-        rgba(255,255,200,0.15) 42px
+      top: -50%;
+      left: 10%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255,255,180,0.2) 45%,
+        rgba(255,255,255,0.35) 50%,
+        rgba(255,255,180,0.2) 55%,
+        transparent 70%
       );
-      animation: shimmer 3s linear infinite;
+      animation: lightBeam 4s ease-in-out 1.5s infinite;
     }
 
-    header::after {
-      background: repeating-linear-gradient(
-        -60deg,
-        transparent,
-        transparent 50px,
-        rgba(255,255,255,0.1) 50px,
-        rgba(255,255,255,0.1) 52px
-      );
-      animation: shimmer 5s linear infinite reverse;
-    }
-
-    @keyframes shimmer {
-      0%   { transform: translateX(-50%); }
-      100% { transform: translateX(0%); }
+    @keyframes lightBeam {
+      0%   { transform: translateX(-30%) skewX(-10deg); opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { transform: translateX(180%) skewX(-10deg); opacity: 0; }
     }
 
     header h1 {
       position: relative;
-      font-size: 2.4rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
+      font-size: 3rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      color: white;
       text-shadow:
-        0 1px 2px rgba(255,255,255,0.8),
-        0 0 20px rgba(255,220,50,0.6);
-      color: #3d2000;
+        0 2px 8px rgba(100,50,0,0.5),
+        0 0 30px rgba(255,200,0,0.4);
+      font-weight: 900;
     }
 
     header p {
       position: relative;
-      font-size: 0.95rem;
-      color: #5a3800;
-      opacity: 0.9;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: white;
+      letter-spacing: 0.2em;
+      text-shadow:
+        0 2px 6px rgba(100,50,0,0.5),
+        0 0 20px rgba(255,200,0,0.3);
     }
 
     /* ===== レイアウト ===== */
@@ -118,7 +125,6 @@
       transform: translateY(-4px);
     }
 
-    /* サムネイル：クリックでYouTubeへ */
     .thumbnail-link {
       display: block;
       position: relative;
@@ -131,7 +137,6 @@
       display: block;
     }
 
-    /* 再生ボタン風オーバーレイ */
     .thumbnail-link::after {
       content: '▶';
       position: absolute;
@@ -144,12 +149,120 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       line-height: 60px;
       text-align: center;
       pointer-events: none;
+    }
+
+    /* ===== 講座資料 ===== */
+    .materials {
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+    }
+
+    .materials h2 {
+      font-size: 1.2rem;
+      color: #b8860b;
+      border-left: 4px solid #b8860b;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .material-list {
+      list-style: none;
+      padding: 0 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .material-list li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.85rem;
+      transition: background 0.15s;
+    }
+
+    .material-list li a:hover {
+      background: #ffe8cc;
+    }
+
+    .material-list li a::before {
+      content: '📄';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== 参考動画セクション ===== */
+    .ref-section {
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+    }
+
+    .ref-section h2 {
+      font-size: 1.2rem;
+      color: #b8860b;
+      border-left: 4px solid #b8860b;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .ref-section h3 {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e8d5a3;
+    }
+
+    .ref-category {
+      margin-bottom: 40px;
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .ref-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .ref-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .ref-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+    }
+
+    .ref-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .ref-title {
+      padding: 12px 16px 16px;
+      font-size: 0.9rem;
+      color: #333;
+      line-height: 1.5;
     }
 
     .video-label {
@@ -177,8 +290,8 @@
 <body>
 
   <header>
-    <h1>Joy億LABO</h1>
-    <p>アーカイブ動画一覧</p>
+    <h1>JOY億LABO</h1>
+    <p>アーカイブ一覧</p>
   </header>
 
   <div class="container">
@@ -194,6 +307,11 @@
         </a>
         <div class="video-label">第6回</div>
         <div class="video-title">0507 Joy億LABOグルコン（6次元ビジネスとは）</div>
+        <!-- 資料あり→以下のコメントをはずしてファイル名とタイトルを入れてください
+        <ul class="material-list">
+          <li><a href="ファイル名.pdf" target="_blank">資料タイトル</a></li>
+        </ul>
+        -->
       </div>
 
       <div class="video-card">
@@ -202,6 +320,11 @@
         </a>
         <div class="video-label">第5回</div>
         <div class="video-title">0423 Joy億LABOグルコン（受け取り力）</div>
+        <!-- 資料あり→以下のコメントをはずしてファイル名とタイトルを入れてください
+        <ul class="material-list">
+          <li><a href="ファイル名.pdf" target="_blank">資料タイトル</a></li>
+        </ul>
+        -->
       </div>
 
       <div class="video-card">
@@ -210,6 +333,11 @@
         </a>
         <div class="video-label">第4回</div>
         <div class="video-title">0416 Joy億LABOグルコン（荒魂の解放）</div>
+        <!-- 資料あり→以下のコメントをはずしてファイル名とタイトルを入れてください
+        <ul class="material-list">
+          <li><a href="ファイル名.pdf" target="_blank">資料タイトル</a></li>
+        </ul>
+        -->
       </div>
 
       <div class="video-card">
@@ -218,6 +346,11 @@
         </a>
         <div class="video-label">第3回</div>
         <div class="video-title">0409 Joy億LABOグルコン</div>
+        <!-- 資料あり→以下のコメントをはずしてファイル名とタイトルを入れてください
+        <ul class="material-list">
+          <li><a href="ファイル名.pdf" target="_blank">資料タイトル</a></li>
+        </ul>
+        -->
       </div>
 
       <div class="video-card">
@@ -226,6 +359,11 @@
         </a>
         <div class="video-label">第2回</div>
         <div class="video-title">0402 Joy億LABOグルコン</div>
+        <!-- 資料あり→以下のコメントをはずしてファイル名とタイトルを入れてください
+        <ul class="material-list">
+          <li><a href="ファイル名.pdf" target="_blank">資料タイトル</a></li>
+        </ul>
+        -->
       </div>
 
       <div class="video-card">
@@ -234,11 +372,49 @@
         </a>
         <div class="video-label">第1回</div>
         <div class="video-title">0326 Joy億LABOグルコン</div>
+        <!-- 資料あり→以下のコメントをはずしてファイル名とタイトルを入れてください
+        <ul class="material-list">
+          <li><a href="ファイル名.pdf" target="_blank">資料タイトル</a></li>
+        </ul>
+        -->
       </div>
 
       <!-- ===== ここより上に新しい動画を追加してください ===== -->
 
     </div>
+  </div>
+
+  <!-- ===== 参考動画 ===== -->
+  <div class="ref-section">
+    <h2>参考動画</h2>
+
+    <!-- マインド編 -->
+    <div class="ref-category">
+      <h3>マインド編</h3>
+      <div class="ref-grid">
+
+        <!-- ===== マインド編：新しいものを上に追加してください ===== -->
+
+      </div>
+    </div>
+
+    <!-- ビジネス編 -->
+    <div class="ref-category">
+      <h3>ビジネス編</h3>
+      <div class="ref-grid">
+
+        <!-- ===== ビジネス編：新しいものを上に追加してください ===== -->
+
+        <div class="ref-card">
+          <div class="ref-wrapper">
+            <iframe src="https://player.vimeo.com/video/1105670159?h=8fe266510f" allowfullscreen></iframe>
+          </div>
+          <div class="ref-title">ビジネス構築⑥ WHEREの世界観づくり✴︎億ラボ</div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
   <footer>
