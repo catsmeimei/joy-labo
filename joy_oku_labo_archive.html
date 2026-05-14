@@ -82,15 +82,13 @@
     #save-label {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       color: rgba(255,255,255,0.95);
       font-size: 1.05rem;
       font-weight: bold;
-      margin-bottom: 8px;
+      margin: 16px 0;
       cursor: pointer;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 10px;
       width: 100%;
       max-width: 300px;
     }
@@ -446,7 +444,38 @@
 
     <div class="grid" id="videoGrid">
 
-      <!-- ===== 動画リスト（新しいものを上に追加してください）===== -->
+      <!--
+      ================================================================
+      ★ アーカイブ追加テンプレート（ここをコピーして上に貼り付け）
+      ================================================================
+
+      【資料なしの場合】
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/【動画ID】" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-label">第〇回</div>
+        <div class="video-title">【タイトル】</div>
+      </div>
+
+      【資料ありの場合】
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/【動画ID】" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-label">第〇回</div>
+        <div class="video-title">【タイトル】</div>
+        <div class="material-section">
+          <div class="material-section-title">資料</div>
+          <ul class="material-list">
+            <li><a href="【ファイル名.pptx】" target="_blank">【資料タイトル】</a></li>
+          </ul>
+        </div>
+      </div>
+
+      ※ YouTubeのURLが https://youtube.com/live/XXXXX なら 動画ID = XXXXX
+      ================================================================
+      -->
 
       <div class="video-card">
         <div class="video-wrapper">
@@ -554,7 +583,21 @@
       <h3>マインド編</h3>
       <div class="ref-grid">
 
-        <!-- ===== マインド編：新しいものを上に追加してください ===== -->
+        <!--
+        ================================================================
+        ★ 参考動画追加テンプレート（コピーして上に貼り付け）
+        ================================================================
+        <div class="ref-card">
+          <div class="ref-wrapper">
+            <iframe src="https://player.vimeo.com/video/【動画ID】?h=【ハッシュ】" allowfullscreen></iframe>
+          </div>
+          <div class="ref-title">【タイトル】</div>
+        </div>
+
+        ※ VimeoのURLが https://vimeo.com/1234567/abcdef なら
+           動画ID = 1234567　ハッシュ = abcdef
+        ================================================================
+        -->
 
         <div class="ref-card">
           <div class="ref-wrapper">
@@ -571,7 +614,18 @@
       <h3>ビジネス編</h3>
       <div class="ref-grid">
 
-        <!-- ===== ビジネス編：新しいものを上に追加してください ===== -->
+        <!--
+        ================================================================
+        ★ 参考動画追加テンプレート（コピーして上に貼り付け）
+        ================================================================
+        <div class="ref-card">
+          <div class="ref-wrapper">
+            <iframe src="https://player.vimeo.com/video/【動画ID】?h=【ハッシュ】" allowfullscreen></iframe>
+          </div>
+          <div class="ref-title">【タイトル】</div>
+        </div>
+        ================================================================
+        -->
 
         <div class="ref-card">
           <div class="ref-wrapper">
