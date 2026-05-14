@@ -280,9 +280,19 @@
       margin-bottom: 20px;
     }
 
+    .material-section {
+      padding: 0 16px 14px;
+    }
+
+    .material-section-title {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #b8860b;
+      margin-bottom: 8px;
+    }
+
     .material-list {
       list-style: none;
-      padding: 0 16px 14px;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -291,7 +301,7 @@
     .material-list li a {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: #fff8f0;
       border-radius: 8px;
       padding: 10px 14px;
@@ -306,9 +316,15 @@
     }
 
     .material-list li a::before {
-      content: '📄';
-      font-size: 1rem;
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      background: #D04A02;
+      border-radius: 4px;
       flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='3' fill='%23C43E00'/%3E%3Ctext x='4' y='17' font-size='13' font-weight='bold' fill='white' font-family='Arial'%3EP%3C/text%3E%3C/svg%3E");
+      background-size: cover;
     }
 
     /* ===== 参考動画セクション ===== */
@@ -423,6 +439,20 @@
     <div class="grid" id="videoGrid">
 
       <!-- ===== 動画リスト（新しいものを上に追加してください）===== -->
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/TlkiG0Ft3lU" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-label">第7回</div>
+        <div class="video-title">0514 Joy億LABOグルコン（6次元の落とし穴）</div>
+        <div class="material-section">
+          <div class="material-section-title">資料</div>
+          <ul class="material-list">
+            <li><a href="6次元化後の落とし穴３つ.pptx" target="_blank">6次元化後の落とし穴３つ</a></li>
+          </ul>
+        </div>
+      </div>
 
       <div class="video-card">
         <div class="video-wrapper">
