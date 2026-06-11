@@ -479,11 +479,21 @@
     <div class="grid" id="videoGrid">
 
       <!--
-      ================================================================
-      ★ アーカイブ追加テンプレート（ここをコピーして上に貼り付け）
-      ================================================================
+      ============================================================
+      ★ 動画の追加方法
+      ============================================================
 
-      【全員が見られる動画（６月末まで参加者も含む）】
+      ▼ STEP1：YouTubeのURLから動画IDを取り出す
+        https://youtube.com/live/XXXXX  →  動画ID = XXXXX
+        https://youtu.be/XXXXX          →  動画ID = XXXXX
+
+      ▼ STEP2：下のテンプレートをコピーして、
+               ↓「ここに追加」の下に貼り付ける
+
+      ============================================================
+      【パターンA】全員が見られる動画（資料なし）
+      ============================================================
+
       <div class="video-card">
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/【動画ID】" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -492,8 +502,47 @@
         <div class="video-title">【タイトル】</div>
       </div>
 
-      【継続メンバー限定の動画（７月以降など）】
-      ↓ data-tier="full" を追加するだけでOK
+      ============================================================
+      【パターンB】全員が見られる動画（資料あり・pptxなど）
+      ============================================================
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/【動画ID】" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-label">第〇回</div>
+        <div class="video-title">【タイトル】</div>
+        <div class="material-section">
+          <div class="material-section-title">資料</div>
+          <ul class="material-list">
+            <li><a href="【ファイル名.pptx】" target="_blank">【資料タイトル】</a></li>
+          </ul>
+        </div>
+      </div>
+
+      ============================================================
+      【パターンC】全員が見られる動画（資料あり・Googleドキュメント）
+      ============================================================
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/【動画ID】" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-label">第〇回</div>
+        <div class="video-title">【タイトル】</div>
+        <div class="material-section">
+          <div class="material-section-title">資料</div>
+          <ul class="material-list">
+            <li><a href="【GoogleドキュメントのURL】" target="_blank" class="doc-link">【資料タイトル】</a></li>
+          </ul>
+        </div>
+      </div>
+
+      ============================================================
+      【パターンD】888メンバー限定の動画（資料なし）
+         ※ joyのPWでは🔒ロック表示になる
+      ============================================================
+
       <div class="video-card" data-tier="full">
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/【動画ID】" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -502,7 +551,11 @@
         <div class="video-title">【タイトル】</div>
       </div>
 
-      【資料ありの場合（data-tier="full" はなくてもあってもOK）】
+      ============================================================
+      【パターンE】888メンバー限定の動画（資料あり・pptxなど）
+         ※ joyのPWでは🔒ロック表示になる
+      ============================================================
+
       <div class="video-card" data-tier="full">
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/【動画ID】" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
@@ -517,11 +570,26 @@
         </div>
       </div>
 
-      ※ YouTubeのURLが https://youtube.com/live/XXXXX なら 動画ID = XXXXX
-      ================================================================
+      ============================================================
       -->
 
-      <div class="video-card">
+    <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/zzlS8PNkNtI" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-label">第11回</div>
+        <div class="video-title">0611 Joy億LABOグルコン（ブロック解除セッション前半）</div>
+        <div class="material-section">
+          <div class="material-section-title">資料</div>
+          <ul class="material-list">
+            <li><a href="神遊びビジネスの基礎.pptx" target="_blank">神遊びビジネスの基礎</a></li>
+          </ul>
+        </div>
+      </div>
+      
+
+
+<div class="video-card">
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/bPBLjIeHv5M" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </div>
@@ -649,7 +717,7 @@
         -->
       </div>
 
-      <!-- ===== ここより上に新しい動画を追加してください ===== -->
+      <!-- ▲▲▲ 新しい動画はここより上に追加してください ▲▲▲ -->
 
     </div>
   </div>
